@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/com/market/model/Grocery.java=UTF-8
+encoding//src/com/market/service/GroceryServiceImpl.java=UTF-8
+encoding//src/com/market/service/GroceryServiceImplService.java=UTF-8
+encoding//src/com/market/service/GroceryServiceImplServiceLocator.java=UTF-8
+encoding//src/com/market/service/GroceryServiceImplSoapBindingStub.java=UTF-8

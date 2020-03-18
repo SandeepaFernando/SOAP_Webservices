@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GroceryServiceImplService WSDL service -->
+
+  <service name="GroceryServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.market.com"/>
+      <parameter name="wsdlServiceElement" value="GroceryServiceImplService"/>
+      <parameter name="schemaQualified" value="http://model.market.com,http://service.market.com"/>
+      <parameter name="wsdlServicePort" value="GroceryServiceImpl"/>
+      <parameter name="className" value="com.market.service.GroceryServiceImpl"/>
+      <parameter name="wsdlPortType" value="GroceryServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.market.com" xmlns:retNS="http://service.market.com" xmlns:rtns="http://model.market.com" name="getItem" qname="operNS:getItem" returnQName="retNS:getItemReturn" returnType="rtns:Grocery" soapAction="">
+        <parameter xmlns:pns="http://service.market.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.market.com" xmlns:retNS="http://service.market.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addItem" qname="operNS:addItem" returnQName="retNS:addItemReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.market.com" xmlns:tns="http://model.market.com" qname="pns:g" type="tns:Grocery"/>
+      </operation>
+      <operation xmlns:operNS="http://service.market.com" xmlns:retNS="http://service.market.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteItem" qname="operNS:deleteItem" returnQName="retNS:deleteItemReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.market.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.market.com" xmlns:retNS="http://service.market.com" xmlns:rtns="http://model.market.com" name="getAllItems" qname="operNS:getAllItems" returnQName="retNS:getAllItemsReturn" returnType="rtns:Grocery" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="addItem deleteItem getAllItems getItem"/>
+
+      <typeMapping xmlns:ns="http://model.market.com" qname="ns:Grocery" type="java:com.market.model.Grocery" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

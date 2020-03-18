@@ -1,0 +1,45 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AssertServiceImplService WSDL service -->
+
+  <service name="AssertServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.market.com"/>
+      <parameter name="wsdlServiceElement" value="AssertServiceImplService"/>
+      <parameter name="schemaQualified" value="http://model.market.com,http://service.market.com"/>
+      <parameter name="wsdlServicePort" value="AssertServiceImpl"/>
+      <parameter name="className" value="com.market.service.AssertServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AssertServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="addAssert" qname="operNS:addAssert" xmlns:operNS="http://service.market.com" returnQName="retNS:addAssertReturn" xmlns:retNS="http://service.market.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:a" xmlns:pns="http://service.market.com" type="tns:Asserts" xmlns:tns="http://model.market.com"/>
+      </operation>
+      <operation name="deleteAssert" qname="operNS:deleteAssert" xmlns:operNS="http://service.market.com" returnQName="retNS:deleteAssertReturn" xmlns:retNS="http://service.market.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://service.market.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAllAsserts" qname="operNS:getAllAsserts" xmlns:operNS="http://service.market.com" returnQName="retNS:getAllAssertsReturn" xmlns:retNS="http://service.market.com" returnType="rtns:Asserts" xmlns:rtns="http://model.market.com" soapAction="" >
+      </operation>
+      <operation name="getAssert" qname="operNS:getAssert" xmlns:operNS="http://service.market.com" returnQName="retNS:getAssertReturn" xmlns:retNS="http://service.market.com" returnType="rtns:Asserts" xmlns:rtns="http://model.market.com" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://service.market.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getAllAsserts getAssert deleteAssert addAssert"/>
+
+      <typeMapping
+        xmlns:ns="http://model.market.com"
+        qname="ns:Asserts"
+        type="java:com.market.model.Asserts"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

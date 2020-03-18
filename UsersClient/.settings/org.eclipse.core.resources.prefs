@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/com/market/model/User.java=UTF-8
+encoding//src/com/market/service/UserServiceImpl.java=UTF-8
+encoding//src/com/market/service/UserServiceImplService.java=UTF-8
+encoding//src/com/market/service/UserServiceImplServiceLocator.java=UTF-8
+encoding//src/com/market/service/UserServiceImplSoapBindingStub.java=UTF-8

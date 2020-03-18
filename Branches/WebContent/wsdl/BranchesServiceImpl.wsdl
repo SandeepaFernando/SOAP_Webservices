@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.market.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.market.com" xmlns:intf="http://service.market.com" xmlns:tns1="http://model.market.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.market.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.market.com"/>
+   <element name="getBranch">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBranchResponse">
+    <complexType>
+     <sequence>
+      <element name="getBranchReturn" type="tns1:Branches"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteBranch">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteBranchResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteBranchReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllBranches">
+    <complexType/>
+   </element>
+   <element name="getAllBranchesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllBranchesReturn" type="tns1:Branches"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBranch">
+    <complexType>
+     <sequence>
+      <element name="b" type="tns1:Branches"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBranchResponse">
+    <complexType>
+     <sequence>
+      <element name="addBranchReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.market.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Branches">
+    <sequence>
+     <element name="branchName" nillable="true" type="xsd:string"/>
+     <element name="brancheId" type="xsd:int"/>
+     <element name="location" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getBranchResponse">
+
+      <wsdl:part element="impl:getBranchResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBranchResponse">
+
+      <wsdl:part element="impl:addBranchResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllBranchesRequest">
+
+      <wsdl:part element="impl:getAllBranches" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteBranchRequest">
+
+      <wsdl:part element="impl:deleteBranch" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllBranchesResponse">
+
+      <wsdl:part element="impl:getAllBranchesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBranchRequest">
+
+      <wsdl:part element="impl:addBranch" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteBranchResponse">
+
+      <wsdl:part element="impl:deleteBranchResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBranchRequest">
+
+      <wsdl:part element="impl:getBranch" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BranchesServiceImpl">
+
+      <wsdl:operation name="getBranch">
+
+         <wsdl:input message="impl:getBranchRequest" name="getBranchRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBranchResponse" name="getBranchResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteBranch">
+
+         <wsdl:input message="impl:deleteBranchRequest" name="deleteBranchRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteBranchResponse" name="deleteBranchResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllBranches">
+
+         <wsdl:input message="impl:getAllBranchesRequest" name="getAllBranchesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllBranchesResponse" name="getAllBranchesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBranch">
+
+         <wsdl:input message="impl:addBranchRequest" name="addBranchRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addBranchResponse" name="addBranchResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BranchesServiceImplSoapBinding" type="impl:BranchesServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getBranch">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBranchRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBranchResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteBranch">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteBranchRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteBranchResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllBranches">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllBranchesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllBranchesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBranch">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addBranchRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addBranchResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BranchesServiceImplService">
+
+      <wsdl:port binding="impl:BranchesServiceImplSoapBinding" name="BranchesServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/Branches/services/BranchesServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

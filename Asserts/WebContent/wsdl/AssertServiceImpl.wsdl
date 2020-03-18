@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.market.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.market.com" xmlns:intf="http://service.market.com" xmlns:tns1="http://model.market.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.market.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.market.com"/>
+   <element name="addAssert">
+    <complexType>
+     <sequence>
+      <element name="a" type="tns1:Asserts"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addAssertResponse">
+    <complexType>
+     <sequence>
+      <element name="addAssertReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteAssert">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteAssertResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteAssertReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllAsserts">
+    <complexType/>
+   </element>
+   <element name="getAllAssertsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllAssertsReturn" type="tns1:Asserts"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAssert">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAssertResponse">
+    <complexType>
+     <sequence>
+      <element name="getAssertReturn" type="tns1:Asserts"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.market.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Asserts">
+    <sequence>
+     <element name="assertId" type="xsd:int"/>
+     <element name="assertName" nillable="true" type="xsd:string"/>
+     <element name="quantity" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getAllAssertsRequest">
+
+      <wsdl:part element="impl:getAllAsserts" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllAssertsResponse">
+
+      <wsdl:part element="impl:getAllAssertsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteAssertRequest">
+
+      <wsdl:part element="impl:deleteAssert" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAssertResponse">
+
+      <wsdl:part element="impl:getAssertResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addAssertResponse">
+
+      <wsdl:part element="impl:addAssertResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAssertRequest">
+
+      <wsdl:part element="impl:getAssert" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addAssertRequest">
+
+      <wsdl:part element="impl:addAssert" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteAssertResponse">
+
+      <wsdl:part element="impl:deleteAssertResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AssertServiceImpl">
+
+      <wsdl:operation name="addAssert">
+
+         <wsdl:input message="impl:addAssertRequest" name="addAssertRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addAssertResponse" name="addAssertResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteAssert">
+
+         <wsdl:input message="impl:deleteAssertRequest" name="deleteAssertRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteAssertResponse" name="deleteAssertResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllAsserts">
+
+         <wsdl:input message="impl:getAllAssertsRequest" name="getAllAssertsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllAssertsResponse" name="getAllAssertsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAssert">
+
+         <wsdl:input message="impl:getAssertRequest" name="getAssertRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAssertResponse" name="getAssertResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AssertServiceImplSoapBinding" type="impl:AssertServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addAssert">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addAssertRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addAssertResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteAssert">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteAssertRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteAssertResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllAsserts">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllAssertsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllAssertsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAssert">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAssertRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAssertResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AssertServiceImplService">
+
+      <wsdl:port binding="impl:AssertServiceImplSoapBinding" name="AssertServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/Asserts/services/AssertServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
